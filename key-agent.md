@@ -1,13 +1,4 @@
-# learn_ssh
-
-## ssh Safe Connection
-
-解决什么问题：
-
-1. 采用ssh-key远程登陆，以及保护ssh-key
-2. 采用
-
-### ssh-key
+# ssh-key
 
 ssh-key是一个远远要比password安全的登陆方案，我们的服务器管理策略里面日后将完全禁止password登陆
 
@@ -49,37 +40,7 @@ ssh-key是一个远远要比password安全的登陆方案，我们的服务器�
     3. 注意，要在安全的远端服务器上使用！一旦远端服务器被陷，默认agent的key所能访问的服务器都能被攻击者访问。
     4. 注意在windows的mingw，不会自动启动，需要手动触发`ssh-agent bash`
 
-### 简化登陆命令：ssh-config
 
-**sshd-config** located at place like `/etc/ssh/sshd.config`. 针对ssh daemon process
-
-**ssh-config** 管理的是ssh客户端
-
-typical ssh config file
-
-```log
-Host *.<root domain url>
-  ControlMaster auto
-  ControlPath <HOME>/.ssh/sockets/%r@%h-%p
-  ControlPersist  600
-Host dev*
-  ForwardAgent yes
-  User ubuntu
-Host dev1
-  SetEnv LHOSTNAME=dev1
-  HostName dev1.aws.<root domain url>
-Host dev2
-  SetEnv LHOSTNAME=dev2
-  HostName dev2.aws.<root domain url>
-Host dev3
-  SetEnv LHOSTNAME=dev3
-  HostName dev3.aws.<root domain url>
-```
-
-1. 使用ControlMaster，来保证数据的安全
-2. ControlMaster失灵情况
-    1. `ssh -o dev1`查看进程
-    2. kill该进程
 
 ## ssh网络
 
