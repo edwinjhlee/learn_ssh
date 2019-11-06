@@ -66,10 +66,13 @@ Host dev*
   ForwardAgent yes
   User ubuntu
 Host dev1
+  SetEnv LHOSTNAME=dev1
   HostName dev1.aws.<root domain url>
 Host dev2
+  SetEnv LHOSTNAME=dev2
   HostName dev2.aws.<root domain url>
 Host dev3
+  SetEnv LHOSTNAME=dev3
   HostName dev3.aws.<root domain url>
 ```
 
